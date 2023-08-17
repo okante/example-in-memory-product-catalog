@@ -6,10 +6,10 @@
  */
 declare(strict_types=1);
 
-namespace Ibexa\Bundle\ExampleRemoteProductCatalog;
+namespace Ibexa\Bundle\ExampleInMemoryProductCatalog;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-final class IbexaExampleRemoteProductCatalogBundle extends Bundle
+final class IbexaExampleInMemoryProductCatalogBundle extends Bundle
 {
 }

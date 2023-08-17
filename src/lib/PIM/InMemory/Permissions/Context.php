@@ -6,7 +6,7 @@
  */
 declare(strict_types=1);
 
-namespace Ibexa\ExampleRemoteProductCatalog\PIM\InMemory\Permissions;
+namespace Ibexa\ExampleInMemoryProductCatalog\PIM\InMemory\Permissions;
 
 use Ibexa\Contracts\Core\Repository\Values\ValueObject;
 use Ibexa\Contracts\ProductCatalog\Permission\ContextInterface;

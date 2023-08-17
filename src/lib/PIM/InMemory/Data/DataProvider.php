@@ -6,22 +6,22 @@
  */
 declare(strict_types=1);
 
-namespace Ibexa\ExampleRemoteProductCatalog\PIM\InMemory\Data;
+namespace Ibexa\ExampleInMemoryProductCatalog\PIM\InMemory\Data;
 
 use DateTimeImmutable;
 use Ibexa\Contracts\Core\Collection\ArrayMap;
 use Ibexa\Contracts\Core\Collection\MapInterface;
 use Ibexa\Contracts\Core\Collection\MutableArrayMap;
 use Ibexa\Contracts\ProductCatalog\PriceResolverInterface;
-use Ibexa\ExampleRemoteProductCatalog\PIM\InMemory\Value\AssetCollection;
-use Ibexa\ExampleRemoteProductCatalog\PIM\InMemory\Value\Attribute;
-use Ibexa\ExampleRemoteProductCatalog\PIM\InMemory\Value\AttributeDefinition;
-use Ibexa\ExampleRemoteProductCatalog\PIM\InMemory\Value\AttributeDefinitionAssignment;
-use Ibexa\ExampleRemoteProductCatalog\PIM\InMemory\Value\AttributeGroup;
-use Ibexa\ExampleRemoteProductCatalog\PIM\InMemory\Value\AttributeType;
-use Ibexa\ExampleRemoteProductCatalog\PIM\InMemory\Value\Product;
-use Ibexa\ExampleRemoteProductCatalog\PIM\InMemory\Value\ProductType;
-use Ibexa\ExampleRemoteProductCatalog\PIM\InMemory\Value\VatCategory;
+use Ibexa\ExampleInMemoryProductCatalog\PIM\InMemory\Value\AssetCollection;
+use Ibexa\ExampleInMemoryProductCatalog\PIM\InMemory\Value\Attribute;
+use Ibexa\ExampleInMemoryProductCatalog\PIM\InMemory\Value\AttributeDefinition;
+use Ibexa\ExampleInMemoryProductCatalog\PIM\InMemory\Value\AttributeDefinitionAssignment;
+use Ibexa\ExampleInMemoryProductCatalog\PIM\InMemory\Value\AttributeGroup;
+use Ibexa\ExampleInMemoryProductCatalog\PIM\InMemory\Value\AttributeType;
+use Ibexa\ExampleInMemoryProductCatalog\PIM\InMemory\Value\Product;
+use Ibexa\ExampleInMemoryProductCatalog\PIM\InMemory\Value\ProductType;
+use Ibexa\ExampleInMemoryProductCatalog\PIM\InMemory\Value\VatCategory;
 use Ibexa\ProductCatalog\Local\Repository\DomainMapper\ProductAvailabilityDelegate;
 
 final class DataProvider

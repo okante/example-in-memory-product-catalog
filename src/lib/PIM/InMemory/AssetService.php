@@ -6,14 +6,14 @@
  */
 declare(strict_types=1);
 
-namespace Ibexa\ExampleRemoteProductCatalog\PIM\InMemory;
+namespace Ibexa\ExampleInMemoryProductCatalog\PIM\InMemory;
 
 use Ibexa\Contracts\ProductCatalog\AssetServiceInterface;
 use Ibexa\Contracts\ProductCatalog\Values\Asset\AssetCollectionInterface;
 use Ibexa\Contracts\ProductCatalog\Values\Asset\AssetInterface;
 use Ibexa\Contracts\ProductCatalog\Values\ProductInterface;
 use Ibexa\Core\Base\Exceptions\NotFoundException;
-use Ibexa\ExampleRemoteProductCatalog\PIM\InMemory\Value\AssetCollection;
+use Ibexa\ExampleInMemoryProductCatalog\PIM\InMemory\Value\AssetCollection;
 
 final class AssetService implements AssetServiceInterface
 {

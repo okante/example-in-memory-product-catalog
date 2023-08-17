@@ -6,7 +6,7 @@
  */
 declare(strict_types=1);
 
-namespace Ibexa\ExampleRemoteProductCatalog\PIM\InMemory;
+namespace Ibexa\ExampleInMemoryProductCatalog\PIM\InMemory;
 
 use Ibexa\Contracts\ProductCatalog\ProductServiceInterface;
 use Ibexa\Contracts\ProductCatalog\Values\LanguageSettings;
@@ -17,9 +17,9 @@ use Ibexa\Contracts\ProductCatalog\Values\Product\ProductVariantQuery;
 use Ibexa\Contracts\ProductCatalog\Values\ProductInterface;
 use Ibexa\Contracts\ProductCatalog\Values\ProductVariantInterface;
 use Ibexa\Core\Base\Exceptions\NotFoundException;
-use Ibexa\ExampleRemoteProductCatalog\PIM\InMemory\Data\DataProvider;
-use Ibexa\ExampleRemoteProductCatalog\PIM\InMemory\Value\ProductList;
-use Ibexa\ExampleRemoteProductCatalog\PIM\InMemory\Value\ProductVariantList;
+use Ibexa\ExampleInMemoryProductCatalog\PIM\InMemory\Data\DataProvider;
+use Ibexa\ExampleInMemoryProductCatalog\PIM\InMemory\Value\ProductList;
+use Ibexa\ExampleInMemoryProductCatalog\PIM\InMemory\Value\ProductVariantList;
 
 final class ProductService implements ProductServiceInterface
 {

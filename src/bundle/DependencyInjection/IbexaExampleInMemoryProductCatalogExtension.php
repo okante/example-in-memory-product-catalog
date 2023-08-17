@@ -6,7 +6,7 @@
  */
 declare(strict_types=1);
 
-namespace Ibexa\Bundle\ExampleRemoteProductCatalog\DependencyInjection;
+namespace Ibexa\Bundle\ExampleInMemoryProductCatalog\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\Config\Resource\FileResource;
@@ -16,7 +16,7 @@ use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\Yaml\Yaml;
 
-final class IbexaExampleRemoteProductCatalogExtension extends Extension implements PrependExtensionInterface
+final class IbexaExampleInMemoryProductCatalogExtension extends Extension implements PrependExtensionInterface
 {
     /**
      * @param array<string, mixed> $configs
@@ -53,7 +53,7 @@ final class IbexaExampleRemoteProductCatalogExtension extends Extension implemen
     {
         $container->prependExtensionConfig('jms_translation', [
             'configs' => [
-                'ibexa_exampleremoteproductcatalog' => [
+                'ibexa_exampleinmemoryproductcatalog' => [
                     'dirs' => [
                         __DIR__ . '/../../',
                     ],

@@ -4,29 +4,29 @@ services:
         autoconfigure: true
         public: false    
 
-    Ibexa\ExampleRemoteProductCatalog\PIM\InMemory\Data\DataProvider: ~
+    Ibexa\ExampleInMemoryProductCatalog\PIM\InMemory\Data\DataProvider: ~
 
-    Ibexa\ExampleRemoteProductCatalog\PIM\InMemory\AssetService:
+    Ibexa\ExampleInMemoryProductCatalog\PIM\InMemory\AssetService:
         tags:
             -   name: ibexa.product_catalog.asset_service
                 engine: in_memory
 
-    Ibexa\ExampleRemoteProductCatalog\PIM\InMemory\AttributeGroupService:
+    Ibexa\ExampleInMemoryProductCatalog\PIM\InMemory\AttributeGroupService:
         tags:
             -   name: ibexa.product_catalog.attribute_group_service
                 engine: in_memory
 
-    Ibexa\ExampleRemoteProductCatalog\PIM\InMemory\AttributeDefinitionService:
+    Ibexa\ExampleInMemoryProductCatalog\PIM\InMemory\AttributeDefinitionService:
         tags:
             -   name: ibexa.product_catalog.attribute_definition_service
                 engine: in_memory
 
-    Ibexa\ExampleRemoteProductCatalog\PIM\InMemory\ProductTypeService:
+    Ibexa\ExampleInMemoryProductCatalog\PIM\InMemory\ProductTypeService:
         tags:
             -   name: ibexa.product_catalog.product_type_service
                 engine: in_memory
 
-    Ibexa\ExampleRemoteProductCatalog\PIM\InMemory\ProductService:
+    Ibexa\ExampleInMemoryProductCatalog\PIM\InMemory\ProductService:
         tags:
             -   name: ibexa.product_catalog.product_service
                 engine: in_memory

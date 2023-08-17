@@ -6,15 +6,15 @@
  */
 declare(strict_types=1);
 
-namespace Ibexa\ExampleRemoteProductCatalog\PIM\InMemory;
+namespace Ibexa\ExampleInMemoryProductCatalog\PIM\InMemory;
 
 use Ibexa\Contracts\ProductCatalog\AttributeGroupServiceInterface;
 use Ibexa\Contracts\ProductCatalog\Values\AttributeGroup\AttributeGroupListInterface;
 use Ibexa\Contracts\ProductCatalog\Values\AttributeGroup\AttributeGroupQuery;
 use Ibexa\Contracts\ProductCatalog\Values\AttributeGroupInterface;
 use Ibexa\Core\Base\Exceptions\NotFoundException;
-use Ibexa\ExampleRemoteProductCatalog\PIM\InMemory\Value\AttributeGroup;
-use Ibexa\ExampleRemoteProductCatalog\PIM\InMemory\Value\AttributeGroupList;
+use Ibexa\ExampleInMemoryProductCatalog\PIM\InMemory\Value\AttributeGroup;
+use Ibexa\ExampleInMemoryProductCatalog\PIM\InMemory\Value\AttributeGroupList;
 
 final class AttributeGroupService implements AttributeGroupServiceInterface
 {

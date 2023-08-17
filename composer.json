@@ -1,5 +1,5 @@
 {
-  "name": "ibexa/example-remote-product-catalog",
+  "name": "ibexa/example-in-memory-product-catalog",
   "license": "proprietary",
   "type": "ibexa-bundle",
   "keywords": [
@@ -30,16 +30,16 @@
   },
   "autoload": {
     "psr-4": {
-      "Ibexa\\Bundle\\ExampleRemoteProductCatalog\\": "src/bundle/",
-      "Ibexa\\Contracts\\ExampleRemoteProductCatalog\\": "src/contracts/",
-      "Ibexa\\ExampleRemoteProductCatalog\\": "src/lib/"
+      "Ibexa\\Bundle\\ExampleInMemoryProductCatalog\\": "src/bundle/",
+      "Ibexa\\Contracts\\ExampleInMemoryProductCatalog\\": "src/contracts/",
+      "Ibexa\\ExampleInMemoryProductCatalog\\": "src/lib/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Ibexa\\Tests\\Bundle\\ExampleRemoteProductCatalog\\": "tests/bundle/",
-      "Ibexa\\Tests\\Integration\\ExampleRemoteProductCatalog\\": "tests/integration/",
-      "Ibexa\\Tests\\ExampleRemoteProductCatalog\\": "tests/lib/"
+      "Ibexa\\Tests\\Bundle\\ExampleInMemoryProductCatalog\\": "tests/bundle/",
+      "Ibexa\\Tests\\Integration\\ExampleInMemoryProductCatalog\\": "tests/integration/",
+      "Ibexa\\Tests\\ExampleInMemoryProductCatalog\\": "tests/lib/"
     }
   },
   "scripts": {

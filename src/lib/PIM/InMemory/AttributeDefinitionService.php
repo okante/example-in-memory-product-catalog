@@ -6,15 +6,15 @@
  */
 declare(strict_types=1);
 
-namespace Ibexa\ExampleRemoteProductCatalog\PIM\InMemory;
+namespace Ibexa\ExampleInMemoryProductCatalog\PIM\InMemory;
 
 use Ibexa\Contracts\ProductCatalog\AttributeDefinitionServiceInterface;
 use Ibexa\Contracts\ProductCatalog\Values\AttributeDefinition\AttributeDefinitionListInterface;
 use Ibexa\Contracts\ProductCatalog\Values\AttributeDefinition\AttributeDefinitionQuery;
 use Ibexa\Contracts\ProductCatalog\Values\AttributeDefinitionInterface;
 use Ibexa\Core\Base\Exceptions\NotFoundException;
-use Ibexa\ExampleRemoteProductCatalog\PIM\InMemory\Data\DataProvider;
-use Ibexa\ExampleRemoteProductCatalog\PIM\InMemory\Value\AttributeDefinitionList;
+use Ibexa\ExampleInMemoryProductCatalog\PIM\InMemory\Data\DataProvider;
+use Ibexa\ExampleInMemoryProductCatalog\PIM\InMemory\Value\AttributeDefinitionList;
 
 final class AttributeDefinitionService implements AttributeDefinitionServiceInterface
 {

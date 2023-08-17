@@ -6,7 +6,7 @@
  */
 declare(strict_types=1);
 
-namespace Ibexa\ExampleRemoteProductCatalog\PIM\InMemory\Value;
+namespace Ibexa\ExampleInMemoryProductCatalog\PIM\InMemory\Value;
 
 use Ibexa\Contracts\ProductCatalog\Values\AttributeDefinitionAssignmentInterface;
 use Ibexa\Contracts\ProductCatalog\Values\AttributeDefinitionInterface;

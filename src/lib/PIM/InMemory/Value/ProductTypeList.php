@@ -6,7 +6,7 @@
  */
 declare(strict_types=1);
 
-namespace Ibexa\ExampleRemoteProductCatalog\PIM\InMemory\Value;
+namespace Ibexa\ExampleInMemoryProductCatalog\PIM\InMemory\Value;
 
 use ArrayIterator;
 use Ibexa\Contracts\ProductCatalog\Values\ProductType\ProductTypeListInterface;

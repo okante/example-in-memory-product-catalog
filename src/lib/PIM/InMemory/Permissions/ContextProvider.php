@@ -6,12 +6,12 @@
  */
 declare(strict_types=1);
 
-namespace Ibexa\ExampleRemoteProductCatalog\PIM\InMemory\Permissions;
+namespace Ibexa\ExampleInMemoryProductCatalog\PIM\InMemory\Permissions;
 
 use Ibexa\Contracts\ProductCatalog\Permission\ContextInterface;
 use Ibexa\Contracts\ProductCatalog\Permission\ContextProvider\ContextProviderInterface;
 use Ibexa\Contracts\ProductCatalog\Permission\Policy\PolicyInterface;
-use Ibexa\ExampleRemoteProductCatalog\PIM\InMemory\Value\ValueObject;
+use Ibexa\ExampleInMemoryProductCatalog\PIM\InMemory\Value\ValueObject;
 use ProxyManager\Proxy\LazyLoadingInterface;
 use ProxyManager\Proxy\ValueHolderInterface;
 
