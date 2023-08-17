@@ -33,7 +33,7 @@ final class DataProvider
     /** @var \Ibexa\Contracts\Core\Collection\MapInterface<string, AttributeDefinition>|null */
     private ?MapInterface $attributeDefinitions = null;
 
-    /** @var \Ibexa\Contracts\Core\Collection\MapInterface<string, ProductType>|null  */
+    /** @var \Ibexa\Contracts\Core\Collection\MapInterface<string, ProductType>|null */
     private ?MapInterface $productTypes = null;
 
     /** @var \Ibexa\Contracts\Core\Collection\MapInterface<string, Product>|null */
