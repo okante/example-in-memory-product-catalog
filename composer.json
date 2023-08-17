@@ -1,5 +1,5 @@
 {
-  "name": "ibexa/exampleremoteproductcatalog",
+  "name": "ibexa/example-remote-product-catalog",
   "license": "proprietary",
   "type": "ibexa-bundle",
   "keywords": [
@@ -9,7 +9,7 @@
     { "type": "composer", "url": "https://updates.ibexa.co" }
   ],
   "require": {
-    "php": "^7.4 || ^8.0",
+    "php": "^8.1",
     "ibexa/core": "^4.5.x-dev",
     "symfony/config": "^5.4",
     "symfony/dependency-injection": "^5.4",

@@ -1,4 +1,4 @@
-# exampleremoteproductcatalog
+# example-remote-product-catalog
 
 This package is part of [Ibexa DXP](https://ibexa.co).
 
