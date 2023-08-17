@@ -30,3 +30,15 @@ services:
         tags:
             -   name: ibexa.product_catalog.product_service
                 engine: in_memory
+
+    # Permissions
+
+    Ibexa\ExampleInMemoryProductCatalog\PIM\InMemory\Permissions\ContextProvider: ~
+
+    # Attributes
+
+    ibexa.in_memory_product_catalog.attribute.formatter:
+        class: Ibexa\ProductCatalog\Local\Repository\Attribute\NullValueFormatter
+        tags:
+            -   name: ibexa.product_catalog.attribute.formatter.value
+                type: int
