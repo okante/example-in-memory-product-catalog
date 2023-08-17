@@ -1,10 +1,33 @@
-# example-remote-product-catalog
+# example-in-memory-product-catalog
 
-This package is part of [Ibexa DXP](https://ibexa.co).
-
-To use this package, [install Ibexa DXP](https://doc.ibexa.co/en/latest/install/).
+This package demonstrates how to integrate Ibexa DXP with custom PIM.  
 
 <!-- This package contains the ... functionality for [Ibexa DXP](ibexa.co). -->
+
+## Usage
+
+A) Install `ibexa/example-in-memory-product-catalog` package
+B) Configure new product catalog engine under `ibexa_product_catalog.engines.in_memory` key:
+
+```yaml
+ibexa_product_catalog:
+    engines:
+        in_memory:
+            type: in_memory
+            options:
+                root_location_remote_id: ibexa_product_catalog_root
+```
+
+C) Configure repository to use engine defined in previous step under `ibexa.repositories.default.product_catalog.engine`:
+
+```yaml
+ibexa:
+    repositories:
+        default:
+            # ...
+            product_catalog:
+                engine: in_memory
+```
 
 ## COPYRIGHT
 
