@@ -1,0 +1,32 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false    
+
+    Ibexa\ExampleRemoteProductCatalog\PIM\InMemory\Data\DataProvider: ~
+
+    Ibexa\ExampleRemoteProductCatalog\PIM\InMemory\AssetService:
+        tags:
+            -   name: ibexa.product_catalog.asset_service
+                engine: in_memory
+
+    Ibexa\ExampleRemoteProductCatalog\PIM\InMemory\AttributeGroupService:
+        tags:
+            -   name: ibexa.product_catalog.attribute_group_service
+                engine: in_memory
+
+    Ibexa\ExampleRemoteProductCatalog\PIM\InMemory\AttributeDefinitionService:
+        tags:
+            -   name: ibexa.product_catalog.attribute_definition_service
+                engine: in_memory
+
+    Ibexa\ExampleRemoteProductCatalog\PIM\InMemory\ProductTypeService:
+        tags:
+            -   name: ibexa.product_catalog.product_type_service
+                engine: in_memory
+
+    Ibexa\ExampleRemoteProductCatalog\PIM\InMemory\ProductService:
+        tags:
+            -   name: ibexa.product_catalog.product_service
+                engine: in_memory
