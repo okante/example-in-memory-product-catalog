@@ -25,6 +25,9 @@ use Ibexa\ProductCatalog\Local\Repository\DomainMapper\ProductAvailabilityDelega
 
 final class Product extends ValueObject implements ProductInterface, PriceAwareInterface, AvailabilityAwareInterface
 {
+    /**
+     * @param \Ibexa\Contracts\ProductCatalog\Values\AttributeInterface[] $attributes
+     */
     public function __construct(
         protected readonly PriceResolverInterface $priceResolver,
         protected readonly ProductAvailabilityDelegate $availabilityDelegate,
@@ -33,8 +36,8 @@ final class Product extends ValueObject implements ProductInterface, PriceAwareI
         protected readonly ProductTypeInterface $type,
         protected readonly AssetCollectionInterface $assets = new AssetCollection(),
         protected readonly iterable $attributes = [],
-        protected readonly ?DateTimeInterface $createdAt = new DateTimeImmutable(),
-        protected readonly ?DateTimeInterface $updatedAt = new DateTimeImmutable(),
+        protected readonly DateTimeInterface $createdAt = new DateTimeImmutable(),
+        protected readonly DateTimeInterface $updatedAt = new DateTimeImmutable(),
         protected readonly ?Thumbnail $thumbnail = null
     ) {
     }

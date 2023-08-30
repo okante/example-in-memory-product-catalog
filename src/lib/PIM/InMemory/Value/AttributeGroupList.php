@@ -14,6 +14,9 @@ use Traversable;
 
 final class AttributeGroupList implements AttributeGroupListInterface
 {
+    /**
+     * @param \Ibexa\Contracts\ProductCatalog\Values\AttributeGroupInterface[] $groups
+     */
     public function __construct(
         private readonly array $groups = [],
     ) {

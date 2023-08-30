@@ -12,6 +12,9 @@ use Ibexa\Contracts\Core\Options\OptionsBag;
 
 final class AttributeOptions implements OptionsBag
 {
+    /**
+     * @return array<string, mixed>
+     */
     public function all(): array
     {
         return [];

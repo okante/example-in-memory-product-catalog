@@ -14,6 +14,9 @@ use Traversable;
 
 final class AttributeDefinitionList implements AttributeDefinitionListInterface
 {
+    /**
+     * @param \Ibexa\Contracts\ProductCatalog\Values\AttributeDefinitionInterface[] $definitions
+     */
     public function __construct(
         private readonly array $definitions = [],
         private readonly int $totalCount = 0

@@ -15,6 +15,9 @@ use Traversable;
 
 final class ProductList implements ProductListInterface
 {
+    /**
+     * @param \Ibexa\Contracts\ProductCatalog\Values\ProductInterface[] $products
+     */
     public function __construct(
         private readonly array $products,
         private readonly int $totalCount,

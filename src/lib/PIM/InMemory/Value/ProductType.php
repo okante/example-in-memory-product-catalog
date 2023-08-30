@@ -14,6 +14,9 @@ use Ibexa\Contracts\ProductCatalog\Values\VatCategoryInterface;
 
 final class ProductType extends ValueObject implements ProductTypeInterface
 {
+    /**
+     * @param \Ibexa\Contracts\ProductCatalog\Values\AttributeDefinitionAssignmentInterface[] $attributes
+     */
     public function __construct(
         private readonly string $identifier,
         private readonly string $name,
