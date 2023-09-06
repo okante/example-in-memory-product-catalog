@@ -73,8 +73,8 @@ final class DataProvider
                             200
                         ),
                     ],
-                    new DateTimeImmutable('2023-06-15 00:00:00'),
-                    new DateTimeImmutable('2023-06-15 00:00:00'),
+                    new DateTimeImmutable('2023-06-15 ' . gmdate('H:i:s', $i)),
+                    new DateTimeImmutable('2023-06-15 ' . gmdate('H:i:s', $i)),
                 );
 
                 $this->products->set($code, $product);

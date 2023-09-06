@@ -2,7 +2,7 @@ services:
     _defaults:
         autowire: true
         autoconfigure: true
-        public: false    
+        public: false
 
     Ibexa\ExampleInMemoryProductCatalog\PIM\InMemory\Data\DataProvider: ~
 
@@ -42,3 +42,7 @@ services:
         tags:
             -   name: ibexa.product_catalog.attribute.formatter.value
                 type: int
+
+    # Sort Clauses
+
+    Ibexa\ExampleInMemoryProductCatalog\PIM\InMemory\SortClauseMapper: ~

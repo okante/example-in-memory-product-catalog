@@ -29,7 +29,7 @@ final class CriterionVisitor
             Criterion\LogicalAnd::class => $this->evaluateLogicalAnd($criterion, $product),
             Criterion\LogicalOr::class => $this->evaluateLogicalOr($criterion, $product),
             // Ignore unsupported criteria
-            default => true
+            default => false
         };
     }
 
