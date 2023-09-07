@@ -7,6 +7,7 @@ This package demonstrates how to integrate Ibexa DXP with custom PIM.
 ## Usage
 
 A) Install `ibexa/example-in-memory-product-catalog` package
+
 B) Configure new product catalog engine under `ibexa_product_catalog.engines.in_memory` key:
 
 ```yaml
