@@ -28,6 +28,7 @@ final class CriterionVisitor
             Criterion\ProductAvailability::class => $this->evaluateAvailability($criterion, $product),
             Criterion\LogicalAnd::class => $this->evaluateLogicalAnd($criterion, $product),
             Criterion\LogicalOr::class => $this->evaluateLogicalOr($criterion, $product),
+            Criterion\ProductCategorySubtree::class => true,
             // Ignore unsupported criteria
             default => false
         };
