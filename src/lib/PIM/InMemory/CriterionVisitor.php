@@ -24,6 +24,7 @@ final class CriterionVisitor
 
         return match (get_class($criterion)) {
             Criterion\ProductCode::class => $this->evaluateCode($criterion, $product),
+            Criterion\ProductName::class => $this->evaluateName($criterion, $product),
             Criterion\ProductType::class => $this->evaluateType($criterion, $product),
             Criterion\ProductAvailability::class => $this->evaluateAvailability($criterion, $product),
             Criterion\LogicalAnd::class => $this->evaluateLogicalAnd($criterion, $product),
@@ -37,6 +38,11 @@ final class CriterionVisitor
     private function evaluateCode(Criterion\ProductCode $criterion, ProductInterface $product): bool
     {
         return in_array($product->getCode(), $criterion->getCodes());
+    }
+
+    private function evaluateName(Criterion\ProductName $criterion, ProductInterface $product): bool
+    {
+        return str_contains($criterion->getName(), $product->getName());
     }
 
     private function evaluateType(Criterion\ProductType $criteria, ProductInterface $product): bool

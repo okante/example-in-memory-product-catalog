@@ -32,11 +32,9 @@ services:
                 engine: in_memory
 
     # Permissions
-
     Ibexa\ExampleInMemoryProductCatalog\PIM\InMemory\Permissions\ContextProvider: ~
 
     # Attributes
-
     ibexa.in_memory_product_catalog.attribute.formatter:
         class: Ibexa\ProductCatalog\Local\Repository\Attribute\NullValueFormatter
         tags:
@@ -44,5 +42,4 @@ services:
                 type: int
 
     # Sort Clauses
-
     Ibexa\ExampleInMemoryProductCatalog\PIM\InMemory\SortClauseMapper: ~

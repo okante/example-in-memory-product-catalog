@@ -11,7 +11,7 @@ namespace Ibexa\ExampleInMemoryProductCatalog\PIM\InMemory\Value;
 use Ibexa\Contracts\Core\Repository\Values\ValueObject as BaseValueObject;
 
 /**
- * Becouse \Ibexa\Contracts\Core\Repository\PermissionResolver requires \Ibexa\Contracts\Core\Repository\Values\ValueObject.
+ * Because \Ibexa\Contracts\Core\Repository\PermissionResolver requires \Ibexa\Contracts\Core\Repository\Values\ValueObject.
  */
 abstract class ValueObject extends BaseValueObject
 {

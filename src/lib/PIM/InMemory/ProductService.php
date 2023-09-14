@@ -55,16 +55,15 @@ final class ProductService implements ProductServiceInterface
             $products = $this->applySorting($products, $sortClauses);
         }
 
-        $products = array_slice(
-            $products,
-            $query->getOffset(),
-            $query->getLimit()
-        );
+        if ($query->getLimit() > 0) {
+            $products = array_slice(
+                $products,
+                $query->getOffset(),
+                $query->getLimit()
+            );
+        }
 
-        return new ProductList(
-            array_values($products),
-            $this->data->getProducts()->count()
-        );
+        return new ProductList(array_values($products), count($products));
     }
 
     public function getProductVariant(string $code, ?LanguageSettings $settings = null): ProductVariantInterface
