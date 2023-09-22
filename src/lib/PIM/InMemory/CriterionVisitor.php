@@ -30,6 +30,7 @@ final class CriterionVisitor
             Criterion\LogicalAnd::class => $this->evaluateLogicalAnd($criterion, $product),
             Criterion\LogicalOr::class => $this->evaluateLogicalOr($criterion, $product),
             Criterion\ProductCategorySubtree::class => true,
+            Criterion\MatchAll::class => true,
             // Ignore unsupported criteria
             default => false
         };
