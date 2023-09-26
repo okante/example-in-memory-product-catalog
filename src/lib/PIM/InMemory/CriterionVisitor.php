@@ -35,9 +35,16 @@ final class CriterionVisitor
             Criterion\MatchAll::class => true,
             Criterion\BasePrice::class => $this->evaluatePrice($criterion, $product),
             Criterion\BasePriceRange::class => $this->evaluatePriceRange($criterion, $product),
+            Criterion\IntegerAttribute::class => $this->evaluateIntegerAttribute($criterion, $product),
+            Criterion\IntegerAttributeRange::class => $this->evaluateIntegerRangeAttribute($criterion, $product),
             // Ignore unsupported criteria
             default => false
         };
+    }
+
+    public function __invoke(ProductInterface $product): bool
+    {
+        return $this->evaluate($product);
     }
 
     private function evaluateCode(Criterion\ProductCode $criterion, ProductInterface $product): bool
@@ -101,6 +108,36 @@ final class CriterionVisitor
             && $criterion->getMax()?->greaterThanOrEqual($productPriceMoney);
     }
 
+    private function evaluateIntegerAttribute(
+        Criterion\IntegerAttribute $criterion,
+        ProductInterface $product
+    ): bool {
+        foreach ($product->getAttributes() as $attribute) {
+            if ($criterion->getValue() === $attribute->getValue()) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private function evaluateIntegerRangeAttribute(
+        Criterion\IntegerAttributeRange $criterion,
+        ProductInterface $product
+    ): bool {
+        $criterionMin = $criterion->getMin();
+        $criterionMax = $criterion->getMax();
+
+        foreach ($product->getAttributes() as $attribute) {
+            $attributeVal = $attribute->getValue();
+            if ($attributeVal >= $criterionMin && $attributeVal <= $criterionMax) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     private function evaluateLogicalAnd(Criterion\LogicalAnd $criteria, ProductInterface $product): bool
     {
         foreach ($criteria->getCriteria() as $innerCriterion) {
@@ -121,11 +158,6 @@ final class CriterionVisitor
         }
 
         return false;
-    }
-
-    public function __invoke(ProductInterface $product): bool
-    {
-        return $this->evaluate($product);
     }
 
     private function assertCurrencyCodesAreEqual(

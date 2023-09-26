@@ -18,11 +18,11 @@ use Ibexa\ExampleInMemoryProductCatalog\PIM\InMemory\Value\Attribute;
 use Ibexa\ExampleInMemoryProductCatalog\PIM\InMemory\Value\AttributeDefinition;
 use Ibexa\ExampleInMemoryProductCatalog\PIM\InMemory\Value\AttributeDefinitionAssignment;
 use Ibexa\ExampleInMemoryProductCatalog\PIM\InMemory\Value\AttributeGroup;
-use Ibexa\ExampleInMemoryProductCatalog\PIM\InMemory\Value\AttributeType;
 use Ibexa\ExampleInMemoryProductCatalog\PIM\InMemory\Value\Product;
 use Ibexa\ExampleInMemoryProductCatalog\PIM\InMemory\Value\ProductType;
 use Ibexa\ExampleInMemoryProductCatalog\PIM\InMemory\Value\VatCategory;
 use Ibexa\ProductCatalog\Local\Repository\DomainMapper\ProductAvailabilityDelegate;
+use Ibexa\ProductCatalog\Local\Repository\Values\AttributeType;
 
 final class DataProvider
 {
@@ -66,11 +66,11 @@ final class DataProvider
                     [
                         'height' => new Attribute(
                             $this->getAttributeDefinitions()->get('height'),
-                            100
+                            $i
                         ),
                         'width' => new Attribute(
                             $this->getAttributeDefinitions()->get('width'),
-                            200
+                            $i
                         ),
                     ],
                     new DateTimeImmutable('2023-06-15 ' . gmdate('H:i:s', $i)),
@@ -125,7 +125,7 @@ final class DataProvider
                     'height',
                     'Height',
                     null,
-                    AttributeType::INTEGER,
+                    new AttributeType('integer'),
                     AttributeGroup::DEFAULT
                 ),
                 'width' => new AttributeDefinition(
@@ -133,7 +133,7 @@ final class DataProvider
                     'width',
                     'Width',
                     null,
-                    AttributeType::INTEGER,
+                    new AttributeType('integer'),
                     AttributeGroup::DEFAULT
                 ),
             ]);
