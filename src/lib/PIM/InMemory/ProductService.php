@@ -25,7 +25,8 @@ final class ProductService implements ProductServiceInterface
 {
     public function __construct(
         private readonly DataProvider $data,
-        private readonly SortClauseMapper $sortClauseMapper
+        private readonly SortClauseMapper $sortClauseMapper,
+        private readonly CriterionVisitor $criterionVisitor,
     ) {
     }
 
@@ -43,11 +44,17 @@ final class ProductService implements ProductServiceInterface
         $products = $this->data->getProducts()->toArray();
 
         if ($query->hasFilter()) {
-            $products = array_filter($products, new CriterionVisitor($query->getFilter()));
+            $products = array_filter(
+                $products,
+                fn (ProductInterface $product): bool => $this->criterionVisitor->evaluate($product, $query->getFilter())
+            );
         }
 
         if ($query->hasQuery()) {
-            $products = array_filter($products, new CriterionVisitor($query->getQuery()));
+            $products = array_filter(
+                $products,
+                fn (ProductInterface $product): bool => $this->criterionVisitor->evaluate($product, $query->getQuery())
+            );
         }
 
         $sortClauses = $query->getSortClauses();

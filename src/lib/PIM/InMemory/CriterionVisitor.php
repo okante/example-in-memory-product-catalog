@@ -8,21 +8,24 @@ declare(strict_types=1);
 
 namespace Ibexa\ExampleInMemoryProductCatalog\PIM\InMemory;
 
-use Ibexa\Contracts\ProductCatalog\Values\CurrencyInterface;
+use Ibexa\Contracts\ProductCatalog\CurrencyServiceInterface;
+use Ibexa\Contracts\ProductCatalog\Values\Price\PriceContext;
 use Ibexa\Contracts\ProductCatalog\Values\Product\Query\Criterion;
 use Ibexa\Contracts\ProductCatalog\Values\Product\Query\CriterionInterface;
 use Ibexa\Contracts\ProductCatalog\Values\ProductInterface;
-use Money\Currency;
 
 final class CriterionVisitor
 {
-    public function __construct(private readonly CriterionInterface $criterion)
-    {
+    public function __construct(
+        private readonly CurrencyServiceInterface $currencyService,
+    ) {
     }
 
     public function evaluate(ProductInterface $product, ?CriterionInterface $criterion = null): bool
     {
-        $criterion ??= $this->criterion;
+        if ($criterion === null) {
+            return true;
+        }
 
         return match (get_class($criterion)) {
             Criterion\ProductCode::class => $this->evaluateCode($criterion, $product),
@@ -40,11 +43,6 @@ final class CriterionVisitor
             // Ignore unsupported criteria
             default => false
         };
-    }
-
-    public function __invoke(ProductInterface $product): bool
-    {
-        return $this->evaluate($product);
     }
 
     private function evaluateCode(Criterion\ProductCode $criterion, ProductInterface $product): bool
@@ -69,13 +67,13 @@ final class CriterionVisitor
 
     private function evaluatePrice(Criterion\BasePrice $criterion, ProductInterface $product): bool
     {
-        /** @var \Ibexa\ExampleInMemoryProductCatalog\PIM\InMemory\Value\Product $product */
-        $price = $product->getPrice();
-        if ($price === null) {
-            return false;
-        }
+        $currency = $this->currencyService->getCurrencyByCode(
+            $criterion->getCurrency()->getCode()
+        );
 
-        if (!$this->assertCurrencyCodesAreEqual($price->getCurrency(), $criterion->getCurrency())) {
+        /** @var \Ibexa\ExampleInMemoryProductCatalog\PIM\InMemory\Value\Product $product */
+        $price = $product->getPrice(new PriceContext($currency));
+        if ($price === null) {
             return false;
         }
 
@@ -84,8 +82,12 @@ final class CriterionVisitor
 
     private function evaluatePriceRange(Criterion\BasePriceRange $criterion, ProductInterface $product): bool
     {
+        $currency = $this->currencyService->getCurrencyByCode(
+            $criterion->getMin()->getCurrency()->getCode()
+        );
+
         /** @var \Ibexa\ExampleInMemoryProductCatalog\PIM\InMemory\Value\Product $product */
-        $price = $product->getPrice();
+        $price = $product->getPrice(new PriceContext($currency));
         if ($price === null) {
             return false;
         }
@@ -94,11 +96,6 @@ final class CriterionVisitor
         $max = $criterion->getMax();
 
         if ($min === null && $max === null) {
-            return false;
-        }
-
-        $criterionCurrency = $min === null ? $max->getCurrency() : $min->getCurrency();
-        if (!$this->assertCurrencyCodesAreEqual($price->getCurrency(), $criterionCurrency)) {
             return false;
         }
 
@@ -158,12 +155,5 @@ final class CriterionVisitor
         }
 
         return false;
-    }
-
-    private function assertCurrencyCodesAreEqual(
-        CurrencyInterface $currencyA,
-        Currency $currencyB
-    ): bool {
-        return $currencyA->getCode() === $currencyB->getCode();
     }
 }

@@ -41,5 +41,8 @@ services:
             -   name: ibexa.product_catalog.attribute.formatter.value
                 type: int
 
+    # Criteria
+    Ibexa\ExampleInMemoryProductCatalog\PIM\InMemory\CriterionVisitor: ~
+
     # Sort Clauses
     Ibexa\ExampleInMemoryProductCatalog\PIM\InMemory\SortClauseMapper: ~
