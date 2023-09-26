@@ -8,9 +8,11 @@ declare(strict_types=1);
 
 namespace Ibexa\ExampleInMemoryProductCatalog\PIM\InMemory;
 
+use Ibexa\Contracts\ProductCatalog\Values\CurrencyInterface;
 use Ibexa\Contracts\ProductCatalog\Values\Product\Query\Criterion;
 use Ibexa\Contracts\ProductCatalog\Values\Product\Query\CriterionInterface;
 use Ibexa\Contracts\ProductCatalog\Values\ProductInterface;
+use Money\Currency;
 
 final class CriterionVisitor
 {
@@ -31,6 +33,8 @@ final class CriterionVisitor
             Criterion\LogicalOr::class => $this->evaluateLogicalOr($criterion, $product),
             Criterion\ProductCategorySubtree::class => true,
             Criterion\MatchAll::class => true,
+            Criterion\BasePrice::class => $this->evaluatePrice($criterion, $product),
+            Criterion\BasePriceRange::class => $this->evaluatePriceRange($criterion, $product),
             // Ignore unsupported criteria
             default => false
         };
@@ -54,6 +58,47 @@ final class CriterionVisitor
     private function evaluateAvailability(Criterion\ProductAvailability $criterion, ProductInterface $product): bool
     {
         return $product->isAvailable() === $criterion->isAvailable();
+    }
+
+    private function evaluatePrice(Criterion\BasePrice $criterion, ProductInterface $product): bool
+    {
+        /** @var \Ibexa\ExampleInMemoryProductCatalog\PIM\InMemory\Value\Product $product */
+        $price = $product->getPrice();
+        if ($price === null) {
+            return false;
+        }
+
+        if (!$this->assertCurrencyCodesAreEqual($price->getCurrency(), $criterion->getCurrency())) {
+            return false;
+        }
+
+        return $criterion->getValue()->equals($price->getMoney());
+    }
+
+    private function evaluatePriceRange(Criterion\BasePriceRange $criterion, ProductInterface $product): bool
+    {
+        /** @var \Ibexa\ExampleInMemoryProductCatalog\PIM\InMemory\Value\Product $product */
+        $price = $product->getPrice();
+        if ($price === null) {
+            return false;
+        }
+
+        $min = $criterion->getMin();
+        $max = $criterion->getMax();
+
+        if ($min === null && $max === null) {
+            return false;
+        }
+
+        $criterionCurrency = $min === null ? $max->getCurrency() : $min->getCurrency();
+        if (!$this->assertCurrencyCodesAreEqual($price->getCurrency(), $criterionCurrency)) {
+            return false;
+        }
+
+        $productPriceMoney = $price->getMoney();
+
+        return $criterion->getMin()?->lessThanOrEqual($productPriceMoney)
+            && $criterion->getMax()?->greaterThanOrEqual($productPriceMoney);
     }
 
     private function evaluateLogicalAnd(Criterion\LogicalAnd $criteria, ProductInterface $product): bool
@@ -81,5 +126,12 @@ final class CriterionVisitor
     public function __invoke(ProductInterface $product): bool
     {
         return $this->evaluate($product);
+    }
+
+    private function assertCurrencyCodesAreEqual(
+        CurrencyInterface $currencyA,
+        Currency $currencyB
+    ): bool {
+        return $currencyA->getCode() === $currencyB->getCode();
     }
 }
